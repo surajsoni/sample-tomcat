@@ -39,8 +39,8 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI:marketingtemplateapp_latest
-      - docker push $REPOSITORY_URI:marketingtemplateapp_$IMAGE_TAG
+      - docker push $REPOSITORY_URI:sample-tomcat_latest
+      - docker push $REPOSITORY_URI:sample-tomcat_$IMAGE_TAG
       - echo Writing image definitions file...
       - printf '[{"name":"app","imageUri":"%s"}]' $REPOSITORY_URI:marketingtemplateapp_latest > imagedefinitions.json
       - echo upgrading db-migrate task definitions
