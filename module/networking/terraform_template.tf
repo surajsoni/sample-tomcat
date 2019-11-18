@@ -30,7 +30,7 @@
   "resource": {
     "aws_alb": {
       "main": {
-        "name": "marketingtemplateapp-alb",
+        "name": "marketingtemplateapp-sg",
         "security_groups": [
           "${aws_security_group.lb.id}"
         ],
@@ -54,7 +54,7 @@
     },
     "aws_alb_target_group": {
       "app": {
-        "name": "marketingtemplateapp-target-group",
+        "name": "marketingtemplateapp-tg",
         "port": "${var.alb_port}",
         "protocol": "HTTP",
         "target_type": "ip",
@@ -131,7 +131,7 @@
             "to_port": "${var.app_port}"
           }
         ],
-        "name": "marketingtemplateapp-tasks",
+        "name": "marketingtemplateapp-task",
         "vpc_id": "${aws_vpc.main.id}"
       },
       "lb": {
@@ -156,7 +156,7 @@
             "to_port": 80
           }
         ],
-        "name": "marketingtemplateapp-alb",
+        "name": "marketingtemplateapp-sg",
         "vpc_id": "${aws_vpc.main.id}"
       }
     },
