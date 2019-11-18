@@ -57,7 +57,7 @@
                         "type": "LINUX_CONTAINER"
                     }
                 ],
-                "name": "marketingtemplateapp-codebuild",
+                "name": "marketingtemplateapp-cb",
                 "service_role": "${aws_iam_role.codebuild_role.arn}",
                 "source": [
                     {
@@ -100,7 +100,7 @@
                         "action": {
                             "category": "Build",
                             "configuration": {
-                                "ProjectName": "marketingtemplateapp-codebuild"
+                                "ProjectName": "marketingtemplateapp-cb"
                             },
                             "input_artifacts": [
                                 "source"
@@ -139,21 +139,21 @@
         "aws_iam_role": {
             "codebuild_role": {
                 "assume_role_policy": "${file(\"./policies/codebuild_role.json\")}",
-                "name": "marketingtemplateapp-cb-role"
+                "name": "marketingtemplateapp-cbr"
             },
             "codepipeline_role": {
                 "assume_role_policy": "${file(\"./policies/codepipeline_role.json\")}",
-                "name": "marketingtemplateapp-cp-role"
+                "name": "marketingtemplateapp-cpr"
             }
         },
         "aws_iam_role_policy": {
             "codebuild_policy": {
-                "name": "marketingtemplateapp-cb-policy",
+                "name": "marketingtemplateapp-cbp",
                 "policy": "${data.template_file.codebuild_policy.rendered}",
                 "role": "${aws_iam_role.codebuild_role.id}"
             },
             "codepipeline_policy": {
-                "name": "marketingtemplateapp-cp-policy",
+                "name": "marketingtemplateapp-cpp",
                 "policy": "${data.template_file.codepipeline_policy.rendered}",
                 "role": "${aws_iam_role.codepipeline_role.id}"
             }
