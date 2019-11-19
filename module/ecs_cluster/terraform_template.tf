@@ -11,7 +11,7 @@
   "resource": {
     "aws_ecs_cluster": {
       "main": {
-        "name": "marketingtemplateapp${var.aws_ecs_cluster_name}"
+        "name": "${var.aws_ecs_cluster_name}"
       }
     },
     "aws_ecs_service": {
@@ -26,7 +26,7 @@
             "target_group_arn": "${var.aws_alb_target_group_app}"
           }
         ],
-        "name": "marketingtemplateapp${var.aws_ecs_service_name}",
+        "name": "${var.aws_ecs_service_name}",
         "network_configuration": [
           {
             "security_groups": [
@@ -55,7 +55,7 @@
   "terraform": {
     "backend": {
       "s3": {
-        "bucket": "marketingtemplateapp-s3-bucket",
+        "bucket": "aws-app-migration",
         "key": "ecs/terraform.tfstate",
         "region": "us-east-1"
       }
