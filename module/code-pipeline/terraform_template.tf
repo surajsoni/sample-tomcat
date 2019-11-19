@@ -75,7 +75,7 @@
                         "type": "S3"
                     }
                 ],
-                "name": "marketingtemplateapppipeline",
+                "name": "marketingtemplateapp-pipeline",
                 "role_arn": "${aws_iam_role.codepipeline_role.arn}",
                 "stage": [
                     {
