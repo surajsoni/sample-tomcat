@@ -30,7 +30,7 @@
   "resource": {
     "aws_alb": {
       "main": {
-        "name": "marketingtemplateapp-sg",
+        "name": "tf-ecs-alb",
         "security_groups": [
           "${aws_security_group.lb.id}"
         ],
@@ -54,7 +54,7 @@
     },
     "aws_alb_target_group": {
       "app": {
-        "name": "marketingtemplateapp-tg",
+        "name": "tf-ecs-alb-target-group",
         "port": "${var.alb_port}",
         "protocol": "HTTP",
         "target_type": "ip",
@@ -131,7 +131,7 @@
             "to_port": "${var.app_port}"
           }
         ],
-        "name": "marketingtemplateapp-task",
+        "name": "tf-ecs-tasks",
         "vpc_id": "${aws_vpc.main.id}"
       },
       "lb": {
@@ -156,7 +156,7 @@
             "to_port": 80
           }
         ],
-        "name": "marketingtemplateapp-sg",
+        "name": "tf-ecs-alb",
         "vpc_id": "${aws_vpc.main.id}"
       }
     },
@@ -184,7 +184,7 @@
   "terraform": {
     "backend": {
       "s3": {
-        "bucket": "marketingtemplateapp-s3-bucket",
+        "bucket": "aws-app-migration",
         "key": "networking/terraform.tfstate",
         "region": "us-east-1"
       }
