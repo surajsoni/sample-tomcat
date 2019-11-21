@@ -57,7 +57,7 @@
                         "type": "LINUX_CONTAINER"
                     }
                 ],
-                "name": "marketingtemplateapp-cb",
+                "name": "nextgenapp-codebuild",
                 "service_role": "${aws_iam_role.codebuild_role.arn}",
                 "source": [
                     {
@@ -75,7 +75,7 @@
                         "type": "S3"
                     }
                 ],
-                "name": "marketingtemplateapp-pipeline",
+                "name": "nextgen-pipeline",
                 "role_arn": "${aws_iam_role.codepipeline_role.arn}",
                 "stage": [
                     {
@@ -100,7 +100,7 @@
                         "action": {
                             "category": "Build",
                             "configuration": {
-                                "ProjectName": "marketingtemplateapp-cb"
+                                "ProjectName": "nextgenapp-codebuild"
                             },
                             "input_artifacts": [
                                 "source"
@@ -139,21 +139,21 @@
         "aws_iam_role": {
             "codebuild_role": {
                 "assume_role_policy": "${file(\"./policies/codebuild_role.json\")}",
-                "name": "marketingtemplateapp-cbr"
+                "name": "codebuild-role"
             },
             "codepipeline_role": {
                 "assume_role_policy": "${file(\"./policies/codepipeline_role.json\")}",
-                "name": "marketingtemplateapp-cpr"
+                "name": "codepipeline-role"
             }
         },
         "aws_iam_role_policy": {
             "codebuild_policy": {
-                "name": "marketingtemplateapp-cbp",
+                "name": "codebuild-policy",
                 "policy": "${data.template_file.codebuild_policy.rendered}",
                 "role": "${aws_iam_role.codebuild_role.id}"
             },
             "codepipeline_policy": {
-                "name": "marketingtemplateapp-cpp",
+                "name": "codepipeline_policy",
                 "policy": "${data.template_file.codepipeline_policy.rendered}",
                 "role": "${aws_iam_role.codepipeline_role.id}"
             }
@@ -161,7 +161,7 @@
         "aws_s3_bucket": {
             "source": {
                 "acl": "private",
-                "bucket": "marketingtemplateapp-s3-bucket",
+                "bucket": "aws-app-migration",
                 "force_destroy": true
             }
         }
@@ -169,7 +169,7 @@
     "terraform": {
         "backend": {
             "s3": {
-                "bucket": "marketingtemplateapp-s3-bucket",
+                "bucket": "aws-app-migration",
                 "key": "pipeline/terraform.tfstate",
                 "region": "us-east-1"
             }
