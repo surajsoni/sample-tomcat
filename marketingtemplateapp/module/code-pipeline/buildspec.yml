@@ -27,7 +27,7 @@ phases:
       - echo Contents of dir..........
       - echo `ls /usr/lib/jvm`
       - echo Build started on `date`
-      - echo performing maven build
+      - echo performing  build
       - cd webapp
       - mvn clean install
       - cd ..
