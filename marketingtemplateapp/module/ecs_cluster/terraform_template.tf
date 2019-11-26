@@ -21,7 +21,7 @@
         "launch_type": "${var.ecs_service_launch_type}",
         "load_balancer": [
           {
-            "container_name": "app",
+            "container_name": "marketingtemplateapp-app",
             "container_port": "${var.app_port}",
             "target_group_arn": "${var.aws_alb_target_group_app}"
           }
