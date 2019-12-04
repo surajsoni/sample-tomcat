@@ -1,6 +1,6 @@
 [{
         "Cpu": 256,
-        "image": "marketingapp",
+        "image": "marketingtemplateapi",
         "Memory": 512,
         "name": "app",
         "networkMode": "awsvpc",
