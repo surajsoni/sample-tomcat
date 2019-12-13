@@ -31,9 +31,8 @@ phases:
       - echo `ls /usr/lib/jvm`
       - echo Build started on `date`
       - echo performing  build
-      - cd webapp && mvn clean install
+      - mvn clean install
       - echo Building the Docker image...
-      - cd ..
       - docker build --no-cache -t $REPOSITORY_URI:marketingtemplateapi_latest .
       - echo $REPOSITORY_URI
       - docker tag $REPOSITORY_URI:marketingtemplateapi_latest $REPOSITORY_URI:marketingtemplateapi_$IMAGE_TAG
